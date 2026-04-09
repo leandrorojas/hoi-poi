@@ -23,13 +23,13 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: "@leandrorojas"
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Set prerelease version
         run: |
           BASE_VERSION=$(node -p "require('./package.json').version")
           npm version ${BASE_VERSION}-build-${{ github.run_number }} --no-git-tag-version
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Publish prerelease
         run: npm publish --tag prerelease
