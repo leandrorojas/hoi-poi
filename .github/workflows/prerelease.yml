@@ -1,0 +1,32 @@
+name: Prerelease
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish-prerelease:
+    name: Publish Prerelease
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          scope: "@leandrorojas"
+
+      - name: Set prerelease version
+        run: npm version 0.0.1-build-${{ github.run_number }} --no-git-tag-version
+
+      - name: Publish prerelease
+        run: npm publish --tag prerelease
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
