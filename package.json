@@ -1,0 +1,14 @@
+{
+  "name": "@leandrorojas/hoi-poi",
+  "version": "0.0.1",
+  "description": "Hosted Open Interface Pieces On Infrastructure — shared component library and micro-frontend scaffolding",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leandrorojas/hoi-poi.git"
+  },
+  "license": "MIT"
+}
