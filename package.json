@@ -11,7 +11,7 @@
     "url": "https://github.com/leandrorojas/hoi-poi.git"
   },
   "scripts": {
-    "test:integration": "echo \"No integration tests configured yet\" && exit 0"
+    "test:integration": "echo \"No integration tests configured yet\" && exit 1"
   },
   "license": "MIT"
 }
