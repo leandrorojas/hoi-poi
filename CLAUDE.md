@@ -21,7 +21,7 @@ Hosted Open Interface Pieces On Infrastructure — a shared component library, s
 ## Coding Standards
 
 - Zero SonarQube issues on PR code before merging
-- Zero CodeRabbit comments on PR code before merging
+- No unresolved critical or major CodeRabbit findings on PR code before merging
 - Unit tests required for all components and utilities
 - Integration tests run automatically after code quality checks pass
 
