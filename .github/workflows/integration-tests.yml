@@ -10,6 +10,9 @@ concurrency:
   group: integration-tests-${{ github.event.workflow_run.head_branch }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   integration-tests:
     name: Run Integration Tests
