@@ -1,19 +1,45 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import App from "./App";
+import { MemoryRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import BackOffice from "./pages/BackOffice";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-jest.mock("hoiPoi/components", () => ({
-  Greeting: ({ name }) => <span>Hello, {name}!</span>,
-}));
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/backoffice"
+        element={
+          <ProtectedRoute>
+            <BackOffice />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<Navigate to="/login" replace />} />
+    </Routes>
+  );
+}
 
-describe("App", () => {
-  it("renders shell app heading", () => {
-    render(<App />);
-    expect(screen.getByText("Shell App")).toBeInTheDocument();
+describe("App routing", () => {
+  beforeEach(() => {
+    localStorage.removeItem("hoi_poi_auth_token");
   });
 
-  it("renders remote greeting component", async () => {
-    render(<App />);
-    expect(await screen.findByText("Hello, Hoi-Poi!")).toBeInTheDocument();
+  it("renders login page by default", () => {
+    render(<MemoryRouter initialEntries={["/"]}><AppRoutes /></MemoryRouter>);
+    expect(screen.getByText("Login")).toBeInTheDocument();
+  });
+
+  it("redirects to login when accessing backoffice without token", () => {
+    render(<MemoryRouter initialEntries={["/backoffice"]}><AppRoutes /></MemoryRouter>);
+    expect(screen.getByText("Login")).toBeInTheDocument();
+  });
+
+  it("renders backoffice when token is present", () => {
+    localStorage.setItem("hoi_poi_auth_token", "valid-token");
+    render(<MemoryRouter initialEntries={["/backoffice"]}><AppRoutes /></MemoryRouter>);
+    expect(screen.getByText("Back Office")).toBeInTheDocument();
   });
 });
