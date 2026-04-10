@@ -1,1 +1,1 @@
-// Component exports — add components here as they are built
+export { default as Greeting } from "./Greeting";

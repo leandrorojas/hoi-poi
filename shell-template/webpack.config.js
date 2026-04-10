@@ -35,8 +35,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "shell",
       remotes: {
-        // Add remote micro-frontends here, e.g.:
-        // hoiPoi: "hoiPoi@http://localhost:3001/remoteEntry.js",
+        hoiPoi: "hoiPoi@http://localhost:3001/remoteEntry.js",
       },
       shared: {
         react: { singleton: true, requiredVersion: "19.2.5" },

@@ -6,14 +6,15 @@ module.exports = {
   entry: "./src/index.js",
   mode: "development",
   devServer: {
-    port: 3000,
+    port: 3001,
     hot: true,
+    headers: { "Access-Control-Allow-Origin": "*" },
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
     clean: true,
-    publicPath: "auto",
+    publicPath: "http://localhost:3001/",
   },
   resolve: {
     extensions: [".js", ".jsx"],
