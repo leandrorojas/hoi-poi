@@ -40,8 +40,8 @@ module.exports = {
         "./utils": "./src/utils/index.js",
       },
       shared: {
-        react: { singleton: true, requiredVersion: "^19.2.5" },
-        "react-dom": { singleton: true, requiredVersion: "^19.2.5" },
+        react: { singleton: true, requiredVersion: "19.2.5" },
+        "react-dom": { singleton: true, requiredVersion: "19.2.5" },
       },
     }),
     new HtmlWebpackPlugin({

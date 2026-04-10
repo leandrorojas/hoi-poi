@@ -39,8 +39,8 @@ module.exports = {
         // hoiPoi: "hoiPoi@http://localhost:3001/remoteEntry.js",
       },
       shared: {
-        react: { singleton: true, requiredVersion: "^19.2.5" },
-        "react-dom": { singleton: true, requiredVersion: "^19.2.5" },
+        react: { singleton: true, requiredVersion: "19.2.5" },
+        "react-dom": { singleton: true, requiredVersion: "19.2.5" },
       },
     }),
     new HtmlWebpackPlugin({
