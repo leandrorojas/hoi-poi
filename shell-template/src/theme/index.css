@@ -1,0 +1,35 @@
+@import "./variables.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--hp-font-family);
+  font-size: var(--hp-font-size-base);
+  color: var(--hp-color-text);
+  background-color: var(--hp-color-background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--hp-color-text);
+}
+
+button {
+  font-family: var(--hp-font-family);
+  font-size: var(--hp-font-size-base);
+  padding: var(--hp-spacing-sm) var(--hp-spacing-md);
+  border: none;
+  border-radius: var(--hp-radius-sm);
+  background-color: var(--hp-color-primary);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--hp-color-primary-hover);
+}

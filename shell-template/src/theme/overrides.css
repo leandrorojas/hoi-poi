@@ -1,0 +1,8 @@
+/* Site-specific theme overrides.
+   Override any --hp-* variable here to customize per site.
+   Example:
+   :root {
+     --hp-color-primary: #6200ee;
+     --hp-color-primary-hover: #3700b3;
+   }
+*/

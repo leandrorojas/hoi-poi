@@ -43,6 +43,7 @@ module.exports = [
         beforeEach: "readonly",
         afterEach: "readonly",
         jest: "readonly",
+        __dirname: "readonly",
       },
     },
   },
