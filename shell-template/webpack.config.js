@@ -4,10 +4,10 @@ const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
   entry: "./src/index.js",
-  mode: "development",
   devServer: {
     port: 3000,
     hot: true,
+    historyApiFallback: true,
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -33,11 +33,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "hoiPoi",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./components": "./src/components/index.js",
-        "./utils": "./src/utils/index.js",
+      name: "shell",
+      remotes: {
+        // Add remote micro-frontends here, e.g.:
+        // hoiPoi: "hoiPoi@http://localhost:3001/remoteEntry.js",
       },
       shared: {
         react: { singleton: true, requiredVersion: "19.2.5" },
