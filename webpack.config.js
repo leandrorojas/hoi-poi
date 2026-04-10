@@ -39,6 +39,7 @@ module.exports = {
       exposes: {
         "./components": "./src/components/index.js",
         "./utils": "./src/utils/index.js",
+        "./theme": "./src/theme/index.js",
       },
       shared: {
         react: { singleton: true, requiredVersion: "19.2.5" },

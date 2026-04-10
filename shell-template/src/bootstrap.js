@@ -1,3 +1,5 @@
+import "./theme/index.css";
+import "./theme/overrides.css";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 
