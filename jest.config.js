@@ -4,6 +4,7 @@ module.exports = {
     "^.+\\.jsx?$": "babel-jest",
   },
   moduleFileExtensions: ["js", "jsx"],
+  coverageReporters: ["lcov", "text"],
   collectCoverageFrom: [
     "src/**/*.{js,jsx}",
     "!src/index.js",
