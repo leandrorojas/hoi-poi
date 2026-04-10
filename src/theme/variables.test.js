@@ -25,8 +25,12 @@ describe("theme variables", () => {
     expect(css).toContain("--hp-spacing-lg:");
   });
 
-  it("defines all variables under :root for overridability", () => {
-    expect(css).toMatch(/:root\s*\{/);
+  it("defines all variables inside :root block", () => {
+    const rootBlock = css.match(/:root\s*\{([^}]+)\}/s);
+    expect(rootBlock).not.toBeNull();
+    expect(rootBlock[1]).toContain("--hp-color-primary:");
+    expect(rootBlock[1]).toContain("--hp-font-family:");
+    expect(rootBlock[1]).toContain("--hp-spacing-md:");
   });
 
   it("uses hp- prefix for all custom properties", () => {
