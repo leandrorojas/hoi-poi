@@ -23,12 +23,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
-          },
-        },
+        use: "babel-loader",
       },
       {
         test: /\.css$/,
@@ -45,8 +40,8 @@ module.exports = {
         "./utils": "./src/utils/index.js",
       },
       shared: {
-        react: { singleton: true, requiredVersion: false, eager: true },
-        "react-dom": { singleton: true, requiredVersion: false, eager: true },
+        react: { singleton: true, requiredVersion: "^19.2.5" },
+        "react-dom": { singleton: true, requiredVersion: "^19.2.5" },
       },
     }),
     new HtmlWebpackPlugin({
