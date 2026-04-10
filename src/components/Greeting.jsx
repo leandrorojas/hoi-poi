@@ -1,11 +1,9 @@
-import PropTypes from "prop-types";
-
+/**
+ * @param {object} props
+ * @param {string} [props.name]
+ */
 function Greeting({ name = "World" }) {
   return <h2>Hello, {name}!</h2>;
 }
-
-Greeting.propTypes = {
-  name: PropTypes.string,
-};
 
 export default Greeting;
