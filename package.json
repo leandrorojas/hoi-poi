@@ -15,8 +15,7 @@
     "build": "webpack --mode production",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "lint": "eslint src/",
-    "test:integration": "echo \"No integration tests configured yet\" && exit 1"
+    "lint": "eslint src/"
   },
   "license": "MIT",
   "dependencies": {
