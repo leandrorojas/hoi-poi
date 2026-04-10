@@ -2,7 +2,7 @@ import { getToken, setToken, clearToken } from "./auth";
 
 describe("auth token management", () => {
   beforeEach(() => {
-    localStorage.clear();
+    clearToken();
   });
 
   it("returns null when no token is set", () => {
