@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 concurrency:
-  group: integration-tests-${{ github.head_ref || github.ref }}
+  group: integration-tests-${{ github.event.workflow_run.head_branch }}
   cancel-in-progress: true
 
 jobs:
