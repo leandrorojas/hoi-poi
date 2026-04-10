@@ -19,6 +19,7 @@ module.exports = [
         document: "readonly",
         window: "readonly",
         console: "readonly",
+        localStorage: "readonly",
       },
     },
     settings: {
