@@ -5,12 +5,14 @@
   "description": "Base React + Webpack + Module Federation shell app template",
   "scripts": {
     "dev": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "test": "jest"
   },
   "license": "MIT",
   "dependencies": {
     "react": "19.2.5",
-    "react-dom": "19.2.5"
+    "react-dom": "19.2.5",
+    "react-router-dom": "^7.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",

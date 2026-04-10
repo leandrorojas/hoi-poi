@@ -1,17 +1,24 @@
-import { lazy, Suspense } from "react";
-
-const RemoteGreeting = lazy(() =>
-  import("hoiPoi/components").then((mod) => ({ default: mod.Greeting }))
-);
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import BackOffice from "./pages/BackOffice";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <div>
-      <h1>Shell App</h1>
-      <Suspense fallback={<p>Loading remote component...</p>}>
-        <RemoteGreeting name="Hoi-Poi" />
-      </Suspense>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/backoffice"
+          element={
+            <ProtectedRoute>
+              <BackOffice />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
