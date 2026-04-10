@@ -2,10 +2,11 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import { AUTH_TOKEN_KEY } from "../auth/constants";
 
 describe("ProtectedRoute", () => {
   beforeEach(() => {
-    localStorage.removeItem("hoi_poi_auth_token");
+    localStorage.removeItem(AUTH_TOKEN_KEY);
   });
 
   it("redirects to login when no token is present", () => {
@@ -29,7 +30,7 @@ describe("ProtectedRoute", () => {
   });
 
   it("renders children when token is present", () => {
-    localStorage.setItem("hoi_poi_auth_token", "valid-token");
+    localStorage.setItem(AUTH_TOKEN_KEY, "valid-token");
     render(
       <MemoryRouter initialEntries={["/protected"]}>
         <Routes>

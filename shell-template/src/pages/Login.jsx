@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { AUTH_TOKEN_KEY } from "../auth/constants";
 
 function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    localStorage.setItem("hoi_poi_auth_token", "placeholder-token");
+    localStorage.setItem(AUTH_TOKEN_KEY, "placeholder-token");
     navigate("/backoffice");
   };
 

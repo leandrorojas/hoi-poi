@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 import BackOffice from "./BackOffice";
+import { AUTH_TOKEN_KEY } from "../auth/constants";
 
 const mockNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
@@ -11,7 +12,7 @@ jest.mock("react-router-dom", () => ({
 
 describe("BackOffice", () => {
   beforeEach(() => {
-    localStorage.setItem("hoi_poi_auth_token", "test-token");
+    localStorage.setItem(AUTH_TOKEN_KEY, "test-token");
     mockNavigate.mockClear();
   });
 
@@ -23,7 +24,7 @@ describe("BackOffice", () => {
   it("clears token and navigates to login on sign out", () => {
     render(<MemoryRouter><BackOffice /></MemoryRouter>);
     fireEvent.click(screen.getByText("Sign Out"));
-    expect(localStorage.getItem("hoi_poi_auth_token")).toBeNull();
+    expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBeNull();
     expect(mockNavigate).toHaveBeenCalledWith("/login");
   });
 });
