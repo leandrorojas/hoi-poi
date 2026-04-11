@@ -1,16 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { AUTH_TOKEN_KEY } from "../auth/constants";
+import RemoteErrorBoundary from "../components/RemoteErrorBoundary";
 
 const RemoteLoginForm = lazy(() =>
-  import("hoiPoi/components")
-    .then((mod) => {
-      if (!mod || !mod.LoginForm) throw new Error("LoginForm not found in remote");
-      return { default: mod.LoginForm };
-    })
-    .catch(() => ({
-      default: () => <p>Login is temporarily unavailable. Please try again.</p>,
-    }))
+  import("hoiPoi/components").then((mod) => {
+    if (!mod || !mod.LoginForm) throw new Error("LoginForm not found in remote");
+    return { default: mod.LoginForm };
+  })
 );
 
 function Login() {
@@ -24,9 +21,11 @@ function Login() {
   return (
     <div>
       <h1>Login</h1>
-      <Suspense fallback={<p>Loading...</p>}>
-        <RemoteLoginForm onSubmit={handleLogin} />
-      </Suspense>
+      <RemoteErrorBoundary>
+        <Suspense fallback={<p>Loading...</p>}>
+          <RemoteLoginForm onSubmit={handleLogin} />
+        </Suspense>
+      </RemoteErrorBoundary>
     </div>
   );
 }
