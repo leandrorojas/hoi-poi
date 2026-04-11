@@ -1,5 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import { AUTH_TOKEN_KEY } from "../auth/constants";
+
+const RemoteLoginForm = lazy(() =>
+  import("hoiPoi/components").then((mod) => ({ default: mod.LoginForm }))
+);
 
 function Login() {
   const navigate = useNavigate();
@@ -12,7 +17,9 @@ function Login() {
   return (
     <div>
       <h1>Login</h1>
-      <button onClick={handleLogin}>Sign In</button>
+      <Suspense fallback={<p>Loading...</p>}>
+        <RemoteLoginForm onSubmit={handleLogin} />
+      </Suspense>
     </div>
   );
 }
