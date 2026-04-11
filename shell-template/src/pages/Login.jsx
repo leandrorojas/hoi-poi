@@ -25,6 +25,7 @@ function Login() {
         throw new Error("Invalid username or password");
       }
     } catch (err) {
+      localStorage.removeItem(AUTH_TOKEN_KEY);
       setError(err.message);
     }
   };
