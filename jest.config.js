@@ -4,6 +4,9 @@ module.exports = {
     "^.+\\.jsx?$": "babel-jest",
   },
   testPathIgnorePatterns: ["/node_modules/", "/shell-template/"],
+  moduleNameMapper: {
+    "\\.css$": "<rootDir>/__mocks__/styleMock.js",
+  },
   moduleFileExtensions: ["js", "jsx"],
   coverageReporters: ["lcov", "text"],
   collectCoverageFrom: [

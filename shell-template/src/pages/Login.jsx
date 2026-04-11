@@ -3,7 +3,11 @@ import { lazy, Suspense } from "react";
 import { AUTH_TOKEN_KEY } from "../auth/constants";
 
 const RemoteLoginForm = lazy(() =>
-  import("hoiPoi/components").then((mod) => ({ default: mod.LoginForm }))
+  import("hoiPoi/components")
+    .then((mod) => ({ default: mod.LoginForm }))
+    .catch(() => ({
+      default: () => <p>Login is temporarily unavailable. Please try again.</p>,
+    }))
 );
 
 function Login() {

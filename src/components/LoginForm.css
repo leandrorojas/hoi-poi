@@ -22,7 +22,7 @@
 .hp-form-field input:focus {
   outline: none;
   border-color: var(--hp-color-primary);
-  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--hp-color-primary) 20%, transparent);
 }
 
 .hp-error {

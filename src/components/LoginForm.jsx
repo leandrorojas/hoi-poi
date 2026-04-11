@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./LoginForm.css";
 
 /**
  * @param {object} props
@@ -44,8 +45,10 @@ function LoginForm({ onSubmit }) {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          aria-invalid={!!errors.username}
+          aria-describedby={errors.username ? "username-error" : undefined}
         />
-        {errors.username && <span className="hp-error">{errors.username}</span>}
+        {errors.username && <span id="username-error" className="hp-error" role="alert">{errors.username}</span>}
       </div>
 
       <div className="hp-form-field">
@@ -55,8 +58,10 @@ function LoginForm({ onSubmit }) {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          aria-invalid={!!errors.password}
+          aria-describedby={errors.password ? "password-error" : undefined}
         />
-        {errors.password && <span className="hp-error">{errors.password}</span>}
+        {errors.password && <span id="password-error" className="hp-error" role="alert">{errors.password}</span>}
       </div>
 
       <button type="submit">Sign In</button>
