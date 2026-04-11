@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { AUTH_TOKEN_KEY } from "../auth/constants";
 import RemoteErrorBoundary from "../components/RemoteErrorBoundary";
 
@@ -12,10 +12,22 @@ const RemoteLoginForm = lazy(() =>
 
 function Login() {
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
-  const handleLogin = () => {
-    localStorage.setItem(AUTH_TOKEN_KEY, "placeholder-token");
-    navigate("/backoffice");
+  const handleLogin = async ({ username, password }) => {
+    setError(null);
+    try {
+      // Placeholder: replace with real auth API call
+      if (username === "admin" && password === "admin123") {
+        localStorage.setItem(AUTH_TOKEN_KEY, "authenticated-token");
+        navigate("/backoffice");
+      } else {
+        throw new Error("Invalid username or password");
+      }
+    } catch (err) {
+      localStorage.removeItem(AUTH_TOKEN_KEY);
+      setError(err.message);
+    }
   };
 
   return (
@@ -23,7 +35,7 @@ function Login() {
       <h1>Login</h1>
       <RemoteErrorBoundary>
         <Suspense fallback={<p>Loading...</p>}>
-          <RemoteLoginForm onSubmit={handleLogin} />
+          <RemoteLoginForm onSubmit={handleLogin} error={error} />
         </Suspense>
       </RemoteErrorBoundary>
     </div>
