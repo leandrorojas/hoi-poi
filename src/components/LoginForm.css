@@ -1,0 +1,31 @@
+.hp-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hp-spacing-xs);
+  margin-bottom: var(--hp-spacing-md);
+}
+
+.hp-form-field label {
+  font-size: var(--hp-font-size-sm);
+  font-weight: 600;
+  color: var(--hp-color-text);
+}
+
+.hp-form-field input {
+  padding: var(--hp-spacing-sm);
+  border: 1px solid var(--hp-color-border);
+  border-radius: var(--hp-radius-sm);
+  font-family: var(--hp-font-family);
+  font-size: var(--hp-font-size-base);
+}
+
+.hp-form-field input:focus {
+  outline: none;
+  border-color: var(--hp-color-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--hp-color-primary) 20%, transparent);
+}
+
+.hp-error {
+  color: var(--hp-color-error);
+  font-size: var(--hp-font-size-sm);
+}

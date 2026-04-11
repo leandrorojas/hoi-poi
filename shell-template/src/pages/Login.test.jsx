@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 import Login from "./Login";
@@ -16,16 +16,29 @@ describe("Login", () => {
     mockNavigate.mockClear();
   });
 
-  it("renders login heading and button", () => {
+  it("renders login heading", () => {
     render(<MemoryRouter><Login /></MemoryRouter>);
     expect(screen.getByText("Login")).toBeInTheDocument();
-    expect(screen.getByText("Sign In")).toBeInTheDocument();
   });
 
-  it("sets token and navigates on sign in", () => {
+  it("renders login form with username and password fields", async () => {
     render(<MemoryRouter><Login /></MemoryRouter>);
-    fireEvent.click(screen.getByText("Sign In"));
-    expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBe("placeholder-token");
-    expect(mockNavigate).toHaveBeenCalledWith("/backoffice");
+    expect(await screen.findByLabelText("Username")).toBeInTheDocument();
+    expect(screen.getByLabelText("Password")).toBeInTheDocument();
+  });
+
+  it("sets token and navigates on form submit", async () => {
+    render(<MemoryRouter><Login /></MemoryRouter>);
+    const usernameInput = await screen.findByLabelText("Username");
+    const passwordInput = screen.getByLabelText("Password");
+
+    fireEvent.change(usernameInput, { target: { value: "testuser" } });
+    fireEvent.change(passwordInput, { target: { value: "password123" } });
+    fireEvent.click(screen.getByRole("button", { name: "Sign In" }));
+
+    await waitFor(() => {
+      expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBe("placeholder-token");
+      expect(mockNavigate).toHaveBeenCalledWith("/backoffice");
+    });
   });
 });
