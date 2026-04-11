@@ -25,6 +25,15 @@
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--hp-color-primary) 20%, transparent);
 }
 
+.hp-form-error {
+  color: var(--hp-color-error);
+  background-color: color-mix(in srgb, var(--hp-color-error) 10%, transparent);
+  padding: var(--hp-spacing-sm) var(--hp-spacing-md);
+  border-radius: var(--hp-radius-sm);
+  margin-bottom: var(--hp-spacing-md);
+  font-size: var(--hp-font-size-sm);
+}
+
 .hp-error {
   color: var(--hp-color-error);
   font-size: var(--hp-font-size-sm);
