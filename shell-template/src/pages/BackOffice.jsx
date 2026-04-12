@@ -1,14 +1,18 @@
 import { useNavigate } from "react-router-dom";
-
-const authUtils = import("hoiPoi/utils");
+import { AUTH_TOKEN_KEY } from "../auth/constants";
 
 function BackOffice() {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    const { clearToken } = await authUtils;
-    clearToken();
-    navigate("/login");
+    try {
+      const { clearToken } = await import("hoiPoi/utils");
+      clearToken();
+    } catch {
+      localStorage.removeItem(AUTH_TOKEN_KEY);
+    } finally {
+      navigate("/login");
+    }
   };
 
   return (

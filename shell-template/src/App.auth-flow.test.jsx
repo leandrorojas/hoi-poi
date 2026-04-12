@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import App from "../App";
-import { AUTH_TOKEN_KEY } from "../auth/constants";
+import App from "./App";
+import { AUTH_TOKEN_KEY } from "./auth/constants";
 
 describe("Auth flow integration", () => {
   beforeEach(() => {
