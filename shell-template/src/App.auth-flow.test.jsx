@@ -37,6 +37,7 @@ describe("Auth flow integration", () => {
 
     await waitFor(() => {
       expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBe("authenticated-token");
+      expect(screen.getByText("Back Office")).toBeInTheDocument();
     });
   });
 
