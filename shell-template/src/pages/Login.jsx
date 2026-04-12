@@ -26,7 +26,7 @@ function Login() {
       }
     } catch (err) {
       localStorage.removeItem(AUTH_TOKEN_KEY);
-      setError(err.message);
+      setError(err instanceof Error ? err.message : "Login failed");
     }
   };
 
