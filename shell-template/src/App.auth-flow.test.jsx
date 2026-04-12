@@ -64,6 +64,7 @@ describe("Auth flow integration", () => {
 
     await waitFor(() => {
       expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBeNull();
+      expect(screen.getByText("Login")).toBeInTheDocument();
     });
   });
 });
