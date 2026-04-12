@@ -30,10 +30,8 @@ describe("Login", () => {
   it("stores token and navigates on successful login", async () => {
     render(<MemoryRouter><Login /></MemoryRouter>);
     const usernameInput = await screen.findByLabelText("Username");
-    const passwordInput = screen.getByLabelText("Password");
-
     fireEvent.change(usernameInput, { target: { value: "admin" } });
-    fireEvent.change(passwordInput, { target: { value: "admin123" } });
+    fireEvent.change(screen.getByLabelText("Password"), { target: { value: "admin123" } });
     fireEvent.click(screen.getByRole("button", { name: "Sign In" }));
 
     await waitFor(() => {
@@ -42,13 +40,11 @@ describe("Login", () => {
     });
   });
 
-  it("displays error on failed login", async () => {
+  it("displays error and clears token on failed login", async () => {
     render(<MemoryRouter><Login /></MemoryRouter>);
     const usernameInput = await screen.findByLabelText("Username");
-    const passwordInput = screen.getByLabelText("Password");
-
     fireEvent.change(usernameInput, { target: { value: "wrong" } });
-    fireEvent.change(passwordInput, { target: { value: "wrong123" } });
+    fireEvent.change(screen.getByLabelText("Password"), { target: { value: "wrong123" } });
     fireEvent.click(screen.getByRole("button", { name: "Sign In" }));
 
     await waitFor(() => {

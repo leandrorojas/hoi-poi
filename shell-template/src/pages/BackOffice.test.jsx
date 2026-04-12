@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 import BackOffice from "./BackOffice";
@@ -21,10 +21,13 @@ describe("BackOffice", () => {
     expect(screen.getByText("Back Office")).toBeInTheDocument();
   });
 
-  it("clears token and navigates to login on sign out", () => {
+  it("clears token and navigates to login on sign out", async () => {
     render(<MemoryRouter><BackOffice /></MemoryRouter>);
     fireEvent.click(screen.getByText("Sign Out"));
-    expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBeNull();
-    expect(mockNavigate).toHaveBeenCalledWith("/login");
+
+    await waitFor(() => {
+      expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBeNull();
+      expect(mockNavigate).toHaveBeenCalledWith("/login");
+    });
   });
 });
