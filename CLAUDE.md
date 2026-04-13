@@ -9,6 +9,9 @@ This project uses [senzu](https://github.com/leandrorojas/senzu) as a shared AI 
 ### PR Workflow
 Follow @senzu/workflows/pr-workflow.md for the full PR lifecycle on every PR.
 
+### Keeping senzu up to date
+The submodule is pinned to a specific commit. To pull the latest senzu changes: `git submodule update --remote senzu`, then commit the updated pointer.
+
 ## Repo Structure
 
 - `components/` — Reusable UI components published to GitHub Packages
