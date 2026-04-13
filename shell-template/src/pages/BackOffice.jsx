@@ -4,9 +4,15 @@ import { AUTH_TOKEN_KEY } from "../auth/constants";
 function BackOffice() {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem(AUTH_TOKEN_KEY);
-    navigate("/login");
+  const handleLogout = async () => {
+    try {
+      const { clearToken } = await import("hoiPoi/utils");
+      clearToken();
+    } catch {
+      localStorage.removeItem(AUTH_TOKEN_KEY);
+    } finally {
+      navigate("/login");
+    }
   };
 
   return (

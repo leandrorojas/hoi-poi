@@ -17,9 +17,10 @@ function Login() {
   const handleLogin = async ({ username, password }) => {
     setError(null);
     try {
+      const { setToken } = await import("hoiPoi/utils");
       // Placeholder: replace with real auth API call
       if (username === "admin" && password === "admin123") {
-        localStorage.setItem(AUTH_TOKEN_KEY, "authenticated-token");
+        setToken("authenticated-token");
         navigate("/backoffice");
       } else {
         throw new Error("Invalid username or password");
