@@ -2,6 +2,13 @@
 
 Hosted Open Interface Pieces On Infrastructure — a shared component library, shell template, and scaffolding ecosystem for a personal micro-frontend platform.
 
+## Agent configuration
+
+This project uses [senzu](https://github.com/leandrorojas/senzu) as a shared AI config submodule. Cross-project workflows and rules live there.
+
+### PR Workflow
+Follow @senzu/workflows/pr-workflow.md for the full PR lifecycle on every PR.
+
 ## Repo Structure
 
 - `components/` — Reusable UI components published to GitHub Packages
