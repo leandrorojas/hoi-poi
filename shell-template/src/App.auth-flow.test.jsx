@@ -1,11 +1,11 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import App from "./App";
-import { AUTH_TOKEN_KEY } from "./auth/constants";
+import { getToken, setToken, clearToken } from "hoiPoi/utils";
 
 describe("Auth flow integration", () => {
   beforeEach(() => {
-    localStorage.removeItem(AUTH_TOKEN_KEY);
+    clearToken();
     window.history.pushState({}, "", "/");
   });
 
@@ -22,7 +22,7 @@ describe("Auth flow integration", () => {
   });
 
   it("allows authenticated user to access backoffice", () => {
-    localStorage.setItem(AUTH_TOKEN_KEY, "valid-token");
+    setToken("valid-token");
     window.history.pushState({}, "", "/backoffice");
     render(<App />);
     expect(screen.getByText("Back Office")).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe("Auth flow integration", () => {
     fireEvent.click(screen.getByRole("button", { name: "Sign In" }));
 
     await waitFor(() => {
-      expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBe("authenticated-token");
+      expect(getToken()).toBe("authenticated-token");
       expect(screen.getByText("Back Office")).toBeInTheDocument();
     });
   });
@@ -50,12 +50,12 @@ describe("Auth flow integration", () => {
 
     await waitFor(() => {
       expect(screen.getByText("Invalid username or password")).toBeInTheDocument();
-      expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBeNull();
+      expect(getToken()).toBeNull();
     });
   });
 
   it("logout clears token", async () => {
-    localStorage.setItem(AUTH_TOKEN_KEY, "valid-token");
+    setToken("valid-token");
     window.history.pushState({}, "", "/backoffice");
     render(<App />);
     expect(screen.getByText("Back Office")).toBeInTheDocument();
@@ -63,7 +63,7 @@ describe("Auth flow integration", () => {
     fireEvent.click(screen.getByText("Sign Out"));
 
     await waitFor(() => {
-      expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBeNull();
+      expect(getToken()).toBeNull();
       expect(screen.getByText("Login")).toBeInTheDocument();
     });
   });
