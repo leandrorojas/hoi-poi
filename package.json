@@ -2,6 +2,16 @@
   "name": "@leandrorojas/hoi-poi",
   "version": "0.0.1",
   "description": "Hosted Open Interface Pieces On Infrastructure — shared component library and micro-frontend scaffolding",
+  "main": "dist/index.js",
+  "exports": {
+    "./components": "./dist/components/index.js",
+    "./utils": "./dist/utils/index.js",
+    "./theme": "./dist/theme/index.js"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "access": "public"
@@ -13,14 +23,16 @@
   "scripts": {
     "dev": "webpack serve --mode development",
     "build": "webpack --mode production",
+    "build:lib": "webpack --config webpack.lib.config.js --mode production",
+    "prepublishOnly": "npm run build:lib",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "lint": "eslint src/"
   },
   "license": "MIT",
-  "dependencies": {
-    "react": "19.2.5",
-    "react-dom": "19.2.5"
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
@@ -38,6 +50,9 @@
     "html-webpack-plugin": "^5.6.6",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
+    "mini-css-extract-plugin": "^2.10.2",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
     "style-loader": "^4.0.0",
     "webpack": "^5.106.1",
     "webpack-cli": "^7.0.2",
