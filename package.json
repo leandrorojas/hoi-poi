@@ -2,15 +2,14 @@
   "name": "@leandrorojas/hoi-poi",
   "version": "0.0.1",
   "description": "Hosted Open Interface Pieces On Infrastructure — shared component library and micro-frontend scaffolding",
-  "main": "dist/index.js",
   "exports": {
     "./components": "./dist/components/index.js",
+    "./components/style.css": "./dist/components/index.css",
     "./utils": "./dist/utils/index.js",
-    "./theme": "./dist/theme/index.js"
+    "./theme/style.css": "./dist/theme/index.css"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
