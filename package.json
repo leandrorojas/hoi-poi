@@ -6,6 +6,7 @@
     "./components": "./dist/components/index.js",
     "./components/style.css": "./dist/components/index.css",
     "./utils": "./dist/utils/index.js",
+    "./theme": "./dist/theme/index.js",
     "./theme/style.css": "./dist/theme/index.css"
   },
   "files": [
