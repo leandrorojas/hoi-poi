@@ -22,7 +22,22 @@ function BackOffice() {
         <h1>Back Office</h1>
         <button onClick={handleLogout}>Sign Out</button>
       </header>
-      <main className="bo-content" />
+      <main className="bo-content">
+        <section className="bo-welcome">
+          <h2>Welcome</h2>
+          <p>You are signed in. Select a section below to get started.</p>
+        </section>
+        <div className="bo-dashboard">
+          <div className="bo-card">
+            <h3>Overview</h3>
+            <p>Dashboard content will appear here.</p>
+          </div>
+          <div className="bo-card">
+            <h3>Recent Activity</h3>
+            <p>Activity feed will appear here.</p>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }

@@ -23,3 +23,42 @@
   flex: 1;
   padding: var(--hp-spacing-xl);
 }
+
+.bo-welcome {
+  margin-bottom: var(--hp-spacing-xl);
+}
+
+.bo-welcome h2 {
+  margin-bottom: var(--hp-spacing-sm);
+  font-size: var(--hp-font-size-2xl);
+}
+
+.bo-welcome p {
+  color: var(--hp-color-text-secondary);
+}
+
+.bo-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--hp-spacing-lg);
+}
+
+.bo-card {
+  padding: var(--hp-spacing-lg);
+  background-color: var(--hp-color-surface);
+  border: 1px solid var(--hp-color-border);
+  border-radius: var(--hp-radius-md);
+  box-shadow: var(--hp-shadow-sm);
+}
+
+.bo-card h3 {
+  margin-bottom: var(--hp-spacing-sm);
+  font-size: var(--hp-font-size-lg);
+}
+
+.bo-card p {
+  margin: 0;
+  color: var(--hp-color-text-secondary);
+  font-size: var(--hp-font-size-sm);
+  line-height: 1.5;
+}
