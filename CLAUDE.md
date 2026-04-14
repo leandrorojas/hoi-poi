@@ -20,6 +20,7 @@ The submodule is pinned to a specific commit. To pull the latest senzu changes: 
 - `shell-template/` — Base React + Webpack + Module Federation shell app template
 - `utils/` — Shared utilities for auth token management, API client, and error handling
 - `docs/` — Documentation for components, shell template, and publishing guide
+- `examples/consumer/` — Reference consumer app that installs hoi-poi from GitHub Packages (also runs as a CI smoke test)
 
 ## Architecture Decisions
 
