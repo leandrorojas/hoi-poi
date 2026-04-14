@@ -36,7 +36,7 @@ describe("AuthRedirect", () => {
     expect(screen.getByText("Back Office")).toBeInTheDocument();
   });
 
-  it("redirects unknown routes based on auth state", () => {
+  it("redirects unknown routes to login when unauthenticated", () => {
     render(
       <MemoryRouter initialEntries={["/unknown"]}>
         <Routes>
@@ -47,5 +47,19 @@ describe("AuthRedirect", () => {
       </MemoryRouter>
     );
     expect(screen.getByText("Login Page")).toBeInTheDocument();
+  });
+
+  it("redirects unknown routes to backoffice when authenticated", () => {
+    localStorage.setItem(AUTH_TOKEN_KEY, "valid-token");
+    render(
+      <MemoryRouter initialEntries={["/unknown"]}>
+        <Routes>
+          <Route path="/login" element={<p>Login Page</p>} />
+          <Route path="/backoffice" element={<p>Back Office</p>} />
+          <Route path="*" element={<AuthRedirect />} />
+        </Routes>
+      </MemoryRouter>
+    );
+    expect(screen.getByText("Back Office")).toBeInTheDocument();
   });
 });
