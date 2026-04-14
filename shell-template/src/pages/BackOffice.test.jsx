@@ -30,14 +30,20 @@ describe("BackOffice", () => {
     expect(heading.closest(".bo-header")).toBeTruthy();
   });
 
-  it("renders an empty content area", () => {
-    const { container } = render(<MemoryRouter><BackOffice /></MemoryRouter>);
-    const content = container.querySelector(".bo-content");
-    expect(content).toBeEmptyDOMElement();
+  it("renders welcome section with instructions", () => {
+    render(<MemoryRouter><BackOffice /></MemoryRouter>);
+    expect(screen.getByRole("heading", { name: "Welcome" })).toBeInTheDocument();
+    expect(screen.getByText(/select a section below/i)).toBeInTheDocument();
+  });
+
+  it("renders dashboard cards", () => {
+    render(<MemoryRouter><BackOffice /></MemoryRouter>);
+    expect(screen.getByRole("heading", { name: "Overview" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Recent Activity" })).toBeInTheDocument();
   });
 
   it("renders sign out button in the header", () => {
-    const { container } = render(<MemoryRouter><BackOffice /></MemoryRouter>);
+    render(<MemoryRouter><BackOffice /></MemoryRouter>);
     const button = screen.getByRole("button", { name: "Sign Out" });
     expect(button.closest(".bo-header")).toBeTruthy();
   });
