@@ -19,9 +19,16 @@
   font-size: var(--hp-font-size-xl);
 }
 
+.bo-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
 .bo-content {
   flex: 1;
   padding: var(--hp-spacing-xl);
+  overflow-y: auto;
 }
 
 .bo-welcome {
