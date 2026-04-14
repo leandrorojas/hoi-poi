@@ -1,0 +1,10 @@
+.bo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--hp-spacing-md) var(--hp-spacing-xl);
+  background-color: var(--hp-color-surface);
+  border-top: 1px solid var(--hp-color-border);
+  color: var(--hp-color-text-secondary);
+  font-size: var(--hp-font-size-sm);
+}

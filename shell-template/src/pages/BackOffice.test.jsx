@@ -16,11 +16,13 @@ describe("BackOffice", () => {
     mockNavigate.mockClear();
   });
 
-  it("renders the layout with header and content area", () => {
+  it("renders the full layout structure", () => {
     const { container } = render(<MemoryRouter><BackOffice /></MemoryRouter>);
     expect(container.querySelector(".bo-layout")).toBeInTheDocument();
     expect(container.querySelector(".bo-header")).toBeInTheDocument();
+    expect(container.querySelector(".bo-sidebar")).toBeInTheDocument();
     expect(container.querySelector(".bo-content")).toBeInTheDocument();
+    expect(screen.getByRole("contentinfo")).toBeInTheDocument();
   });
 
   it("renders back office heading in the header", () => {

@@ -1,0 +1,13 @@
+.bo-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background-color: var(--hp-color-surface);
+  border-right: 1px solid var(--hp-color-border);
+  padding: var(--hp-spacing-lg) 0;
+}
+
+.bo-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
