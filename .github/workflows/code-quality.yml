@@ -54,6 +54,33 @@ jobs:
           path: coverage/lcov.info
           if-no-files-found: error
 
+  consumer-example-smoke:
+    name: Consumer Example Smoke
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          scope: "@leandrorojas"
+
+      - name: Install example dependencies
+        working-directory: examples/consumer
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run consumer smoke test
+        working-directory: examples/consumer
+        run: npm run smoke
+
   sonarqube:
     name: SonarQube Analysis
     needs: [unit-tests]
