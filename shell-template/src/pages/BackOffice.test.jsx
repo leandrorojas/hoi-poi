@@ -16,14 +16,35 @@ describe("BackOffice", () => {
     mockNavigate.mockClear();
   });
 
-  it("renders back office heading", () => {
+  it("renders the layout with header and content area", () => {
+    const { container } = render(<MemoryRouter><BackOffice /></MemoryRouter>);
+    expect(container.querySelector(".bo-layout")).toBeInTheDocument();
+    expect(container.querySelector(".bo-header")).toBeInTheDocument();
+    expect(container.querySelector(".bo-content")).toBeInTheDocument();
+  });
+
+  it("renders back office heading in the header", () => {
     render(<MemoryRouter><BackOffice /></MemoryRouter>);
-    expect(screen.getByText("Back Office")).toBeInTheDocument();
+    const heading = screen.getByRole("heading", { name: "Back Office" });
+    expect(heading).toBeInTheDocument();
+    expect(heading.closest(".bo-header")).toBeTruthy();
+  });
+
+  it("renders an empty content area", () => {
+    const { container } = render(<MemoryRouter><BackOffice /></MemoryRouter>);
+    const content = container.querySelector(".bo-content");
+    expect(content).toBeEmptyDOMElement();
+  });
+
+  it("renders sign out button in the header", () => {
+    const { container } = render(<MemoryRouter><BackOffice /></MemoryRouter>);
+    const button = screen.getByRole("button", { name: "Sign Out" });
+    expect(button.closest(".bo-header")).toBeTruthy();
   });
 
   it("clears token and navigates to login on sign out", async () => {
     render(<MemoryRouter><BackOffice /></MemoryRouter>);
-    fireEvent.click(screen.getByText("Sign Out"));
+    fireEvent.click(screen.getByRole("button", { name: "Sign Out" }));
 
     await waitFor(() => {
       expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBeNull();

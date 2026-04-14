@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { AUTH_TOKEN_KEY } from "../auth/constants";
+import "./BackOffice.css";
 
 function BackOffice() {
   const navigate = useNavigate();
@@ -16,10 +17,12 @@ function BackOffice() {
   };
 
   return (
-    <div>
-      <h1>Back Office</h1>
-      <p>Welcome to the back office.</p>
-      <button onClick={handleLogout}>Sign Out</button>
+    <div className="bo-layout">
+      <header className="bo-header">
+        <h1>Back Office</h1>
+        <button onClick={handleLogout}>Sign Out</button>
+      </header>
+      <main className="bo-content" />
     </div>
   );
 }

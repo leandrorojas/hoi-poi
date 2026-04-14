@@ -1,0 +1,25 @@
+.bo-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.bo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--hp-spacing-md) var(--hp-spacing-xl);
+  background-color: var(--hp-color-surface);
+  border-bottom: 1px solid var(--hp-color-border);
+  box-shadow: var(--hp-shadow-sm);
+}
+
+.bo-header h1 {
+  margin: 0;
+  font-size: var(--hp-font-size-xl);
+}
+
+.bo-content {
+  flex: 1;
+  padding: var(--hp-spacing-xl);
+}
