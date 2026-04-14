@@ -1,8 +1,10 @@
 import { Navigate } from "react-router-dom";
 import { AUTH_TOKEN_KEY } from "../auth/constants";
 
-// Inverse of ProtectedRoute: renders children only for unauthenticated users.
-// Authenticated users are redirected to /backoffice.
+// Client-side guest gate only — inverse of ProtectedRoute.
+// Renders children for unauthenticated users; redirects authenticated
+// users to /backoffice. Uses AUTH_TOKEN_KEY directly for synchronous
+// route rendering (same rationale as ProtectedRoute).
 function GuestRoute({ children }) {
   const token = localStorage.getItem(AUTH_TOKEN_KEY);
 
