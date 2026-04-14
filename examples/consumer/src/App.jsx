@@ -8,6 +8,7 @@ export default function App() {
 
   const handleSubmit = async ({ username, password }) => {
     setError("");
+    setResult(null);
     // Pretend login: reject "fail", accept anything else
     await new Promise((resolve) => setTimeout(resolve, 300));
     if (username === "fail") {

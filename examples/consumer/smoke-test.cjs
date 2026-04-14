@@ -8,6 +8,10 @@ const assert = require("node:assert/strict");
 const components = require("@leandrorojas/hoi-poi/components");
 assert.equal(typeof components.LoginForm, "function", "LoginForm should be a function (React component)");
 assert.equal(typeof components.Greeting, "function", "Greeting should be a function (React component)");
+assert.doesNotThrow(
+  () => require.resolve("@leandrorojas/hoi-poi/components/style.css"),
+  "components/style.css should resolve via package exports"
+);
 
 const utils = require("@leandrorojas/hoi-poi/utils");
 for (const name of ["getToken", "setToken", "clearToken"]) {
