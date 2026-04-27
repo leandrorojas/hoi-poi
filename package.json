@@ -49,8 +49,8 @@
     "css-loader": "^7.1.4",
     "eslint": "^9.39.4",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "html-webpack-plugin": "^5.6.6",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "html-webpack-plugin": "^5.6.7",
     "husky": "^9.1.7",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
@@ -60,7 +60,7 @@
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "style-loader": "^4.0.0",
-    "webpack": "^5.106.1",
+    "webpack": "^5.106.2",
     "webpack-cli": "^7.0.2",
     "webpack-dev-server": "^5.2.3"
   }
