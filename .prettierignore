@@ -1,0 +1,9 @@
+dist/
+coverage/
+node_modules/
+.husky/
+package-lock.json
+senzu/
+shell-template/
+examples/consumer/dist/
+examples/consumer/node_modules/
