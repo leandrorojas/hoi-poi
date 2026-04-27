@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: PR workflow questions
+    url: https://github.com/leandrorojas/senzu/blob/main/workflows/pr-workflow.md
+    about: How CI gates work, how to handle CodeRabbit / SonarQube findings, rate-limit recovery
+  - name: Site scaffolding (bulma)
+    url: https://github.com/leandrorojas/bulma
+    about: To create a new micro-frontend site that consumes hoi-poi, use bulma
