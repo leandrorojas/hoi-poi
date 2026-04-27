@@ -18,7 +18,7 @@ Sites are scaffolded from this template by **[bulma](https://github.com/leandror
 
 ## Project structure
 
-```
+```text
 hoi-poi/
 ├── components/          # README only — published API documented in src/components/
 ├── docs/                # Deeper docs (publishing guide, federation wiring)
@@ -47,6 +47,7 @@ hoi-poi/
 ## Local development
 
 ### Prerequisites
+
 - Node.js 20+
 - npm 10+
 - Auth against GitHub Packages for installing the published artifact in `examples/consumer/`. A GitHub PAT with `read:packages` in `NODE_AUTH_TOKEN` (or `~/.npmrc`).
@@ -64,7 +65,7 @@ npm install
 ### Dev server
 
 ```bash
-npm run dev    # webpack-dev-server on http://localhost:3000
+npm run dev    # webpack-dev-server on http://localhost:3001
 ```
 
 The dev server runs `src/App.jsx` — it's a playground for local component work, not the published library shape.
